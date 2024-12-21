@@ -30,7 +30,7 @@ public class Card {
     }
 
     public boolean isAce() {
-        return additionalRank.equals("ace");
+        return additionalRank.equals("Ace");
     }
 
 }
