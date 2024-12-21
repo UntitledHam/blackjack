@@ -11,6 +11,12 @@ public class Card {
         this.additionalRank = additionalRank;
     }
 
+    public Card(String suit, int rank) {
+        this.suit = suit;
+        this.rank = rank;
+        this.additionalRank = null;
+    }
+
     public String getSuit() {
         return suit;
     }
@@ -21,6 +27,10 @@ public class Card {
 
     public String getAdditionalRank() {
         return additionalRank;
+    }
+
+    public boolean isAce() {
+        return additionalRank.equals("ace");
     }
 
 }
