@@ -16,9 +16,21 @@ public class Deck {
         addDeck();
     }
 
+    public int getRemainingCards() {
+        return cards.size();
+    }
+
+    public Card drawCard() {
+        return cards.removeFirst();
+    }
+
     public void addDeck() throws IOException {
         cards.addAll(DeckDataIO.buildDeckFromJsonFile("src/main/resources/json/Deck.json"));
         shuffleDeck();
+    }
+
+    public void setDeck() throws IOException {
+        cards = DeckDataIO.buildDeckFromJsonFile("src/main/resources/json/Deck.json");
     }
 
     public void shuffleDeck() {
