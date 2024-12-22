@@ -32,6 +32,10 @@ public class GameTurn {
         }
     }
 
+    public void drawOpponentCard() {
+        Card card = deck.drawCard();
+    }
+
     public int getPlayerScore() {
         return playerScore;
     }
