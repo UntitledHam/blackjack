@@ -20,7 +20,7 @@ public class Deck {
         return cards.size();
     }
 
-    public Card drawCard() {
+    public Card draw() {
         return cards.removeFirst();
     }
 
@@ -35,5 +35,12 @@ public class Deck {
 
     public void shuffleDeck() {
         Collections.shuffle(cards);
+    }
+
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        for (Card card : cards) {
+            card.toString();
+        }
     }
 }

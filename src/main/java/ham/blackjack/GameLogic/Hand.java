@@ -16,6 +16,10 @@ public class Hand {
         return cards;
     }
 
+    public int getScore() {
+        return score; 
+    }
+
     public void draw(Card card) {
         cards.add(card);
         score += card.getRank();

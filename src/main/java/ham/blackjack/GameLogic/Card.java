@@ -36,4 +36,35 @@ public class Card {
         return additionalRank.equals("Ace");
     }
 
+    public String toString() {
+        String suitSymbol;
+        String rankSymbol;
+        switch(suit) {
+            case "hearts":
+                suitSymbol = "♥";
+            case "diamonds": 
+                suitSymbol = "♦";
+            case "spades":
+                suitSymbol = "♠";
+            case "clubs": 
+                suitSymbol = "♣";
+            default: 
+                suitSymbol = "null";
+        }
+        switch(additionalRank) {
+            case "King":
+                rankSymbol = "K";
+            case "Queen":
+                rankSymbol = "Q";
+            case "Jack": 
+                rankSymbol = "J";
+            case "Ace": 
+                rankSymbol = "A";
+            default:
+                rankSymbol = "" + rank;
+        }
+
+        return rankSymbol + suitSymbol;
+    }
+
 }

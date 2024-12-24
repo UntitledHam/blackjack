@@ -1,42 +1,75 @@
 package ham.blackjack.GameLogic;
 
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 
 public class GameTurn {
     Deck deck;
-    List<Card> playerCards; 
-    List<Card> dealerCards; 
-    int playerScore = 0;
-    int dealerScore = 0;
+    Hand playerCards; 
+    Hand dealerCards; 
 
     public GameTurn() throws IOException{
         deck = new Deck();
-        playerCards = new LinkedList<>();
-        dealerCards = new LinkedList<>();
+        playerCards = new Hand();
+        dealerCards = new Hand();
     }
 
     public void draw() {
-        Card card = deck.drawCard();
-        playerCards.add(card);
-        playerScore += card.getRank();
-        if (playerScore > 21) {
-            for (Card c : playerCards) {
-                if (c.getAdditionalRank().equals("Ace") && c.getRank() != 1) {
-                    c.setRank(1);
-                    playerScore -= 10;
-                    return;
-                }
-            }
+        playerCards.draw(deck.draw());
+        int score = playerCards.getScore();
+        if (score == 21) {
+            win();
+        }
+        else if (score > 21) {
+            bust();
+        }
+    } 
+
+    public void drawOpponentCards() {
+        while (dealerCards.getScore() < 17) {
+            dealerCards.draw(deck.draw());
+        }
+        if (dealerCards.getScore() > 21) {
+            dealerBust();
+        }
+        else if (dealerCards.getScore() > playerCards.getScore()) {
+            dealerWin();
+        }
+        else {
+            win();
         }
     }
-
-    public void drawOpponentCard() {
-        Card card = deck.drawCard();
+    
+    public void initialStart() {
+        // Draw 2 cards.
+        for (int i = 0; i < 2; i++) {
+            draw();
+            dealerCards.draw(deck.draw());
+        }
+        
     }
 
-    public int getPlayerScore() {
-        return playerScore;
+    public String printGame() {
+        
+    }
+
+    public void bust() {
+        System.out.println("You bust lmao");
+    }
+
+    public void dealerBust() {
+        System.out.println("The dealer busted lmao");
+    }
+
+    public void win() {
+        System.out.println("You win");
+    }
+
+    public void dealerWin() {
+        System.out.println("The dealer wins");
+    }
+
+    public void resetGame() {
+        playerCards = new Hand();
+        dealerCards = new Hand();
     }
 }
