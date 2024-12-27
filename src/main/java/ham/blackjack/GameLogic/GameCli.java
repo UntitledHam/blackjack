@@ -10,7 +10,8 @@ public class GameCli {
     }
 
     public void gameLoop() {
-      
+      turn.initialStart();
+      System.out.println(turn);
     }
 
     public static void main(String[] args) throws IOException {

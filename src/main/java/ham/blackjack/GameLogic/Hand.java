@@ -6,10 +6,16 @@ import java.util.List;
 public class Hand {
     private List<Card> cards;
     private int score;
+    boolean hideCards;
 
     public Hand() {
         cards = new LinkedList<>();
         score = 0;
+        hideCards = false;
+    }
+
+    public void setHideCards(boolean cardsHidden) {
+        hideCards = cardsHidden;
     }
 
     public List<Card> getCards() {
@@ -18,6 +24,24 @@ public class Hand {
 
     public int getScore() {
         return score; 
+    }
+
+    public String toString() {
+        if (cards.size() == 0) {
+            return "";
+        }
+        StringBuilder str = new StringBuilder();
+        str.append(cards.get(0).toString());
+        for (int i = 1; i < cards.size(); i++) {
+            str.append(" ");
+            if (hideCards) {
+                str.append("?");
+            }
+            else {
+                str.append(cards.get(i).toString());
+            }
+        }
+        return str.toString();
     }
 
     public void draw(Card card) {

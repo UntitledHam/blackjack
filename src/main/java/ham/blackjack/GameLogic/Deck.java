@@ -40,7 +40,9 @@ public class Deck {
     public String toString() {
         StringBuilder str = new StringBuilder();
         for (Card card : cards) {
-            card.toString();
+            str.append(card.toString());
+            str.append(", ");
         }
+        return str.toString();
     }
 }

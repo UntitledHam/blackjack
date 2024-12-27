@@ -43,13 +43,19 @@ public class GameTurn {
         // Draw 2 cards.
         for (int i = 0; i < 2; i++) {
             draw();
+            dealerCards.hideCards = true;
             dealerCards.draw(deck.draw());
         }
         
     }
 
-    public String printGame() {
-        
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append("Dealer's Cards:\n");
+        str.append(dealerCards.toString());
+        str.append("\nYour Cards:\n");
+        str.append(playerCards.toString());
+        return str.toString();
     }
 
     public void bust() {
